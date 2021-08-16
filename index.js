@@ -65,9 +65,8 @@ NOTE: This will be a callback function for the tasks below
 */
 
 function inning(/*Code Here*/){
-    return Math.random(0,2)
+    return Math.floor(Math.random() * 3);
 }
-
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
 Use the finalScore function below to do the following:
@@ -83,19 +82,31 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(innings, numberOfInnings){
+  let home = 0;
+  let away = 0;
+  const total = {};
+  for(let i = 0; i < numberOfInnings; i++){
+    home = home + innings();
+    away = away + innings();
+  }
+  total.Home = home;
+  total.Away = away;
+  return(total);
 }
-
+finalScore(inning, 9);
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(innings) {
+  const score = {};
+  score.Home = innings();
+  score.Away = innings();
+  return score;
 }
-
+getInningScore(inning);
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
@@ -138,10 +149,25 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(innings, inningsScore, inningsPlayed) {
+  let finalScoreA = 0;
+  let finalScoreH = 0;
+  const array = [];
+  for(let i = 0; i < inningsPlayed; i++){
+    const currentObject = inningsScore(inning);
+    array[i] = ("Inning " + (i + 1) + ": " + "Away " + currentObject.Away + " - " + "Home " + currentObject.Home);
+    finalScoreA = currentObject.Away + finalScoreA;
+    finalScoreH = currentObject.Home + finalScoreH;
+  }
+  if(finalScoreA === finalScoreH){
+    array.push("This game will require extra innings: Away " + finalScoreA + " - Home " + finalScoreH);
+  }
+  else{
+    array.push("Final Score: Away " + finalScoreA + " - Home " + finalScoreH)
+  }
+  return array;
 }
-
+console.log(scoreboard(inning, getInningScore, 9));
 
 
 
