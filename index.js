@@ -28,11 +28,13 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+  - counter 1 uses a local variable "count" whithin the counterMaker() function.
+  -counter 2 used a global scope so it returns count. It will continue to add onto itself because it is a global value while counter1 resets each time the function runs.
   2. Which of the two uses a closure? How can you tell?
-  
+  -counter1 uses a closure, because it sets count in counterMaker() equal to counter1 outside of the function.
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+     counter1 would be useful to reset the count varaible to zero each time the fuction runs, while counter 2 would be more useful to keep the data and continually add onto the value
 */
 
 // counter1 code
@@ -63,7 +65,7 @@ NOTE: This will be a callback function for the tasks below
 */
 
 function inning(/*Code Here*/){
-    /*Code Here*/
+    return Math.random(0,2)
 }
 
 
