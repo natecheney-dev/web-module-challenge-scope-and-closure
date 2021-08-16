@@ -155,15 +155,15 @@ function scoreboard(innings, inningsScore, inningsPlayed) {
   const array = [];
   for(let i = 0; i < inningsPlayed; i++){
     const currentObject = inningsScore(inning);
-    array[i] = ("Inning " + (i + 1) + ": " + "Away " + currentObject.Away + " - " + "Home " + currentObject.Home);
+    array[i] = (`Inning ${(i + 1)}: Away ${currentObject.Away} - Home ${currentObject.Home}`);
     finalScoreA = currentObject.Away + finalScoreA;
     finalScoreH = currentObject.Home + finalScoreH;
   }
   if(finalScoreA === finalScoreH){
-    array.push("This game will require extra innings: Away " + finalScoreA + " - Home " + finalScoreH);
+    array.push(`This game will require extra innings: Away ${finalScoreA} - Home ${finalScoreH}`);
   }
   else{
-    array.push("Final Score: Away " + finalScoreA + " - Home " + finalScoreH)
+    array.push(`Final Score: Away ${finalScoreA} - Home ${finalScoreH}`)
   }
   return array;
 }
